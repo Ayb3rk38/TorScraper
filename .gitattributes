@@ -1,0 +1,24 @@
+# Set default behavior to automatic normalization
+* text=auto
+
+# Force code files to use LF (Unix-style) line endings
+# This ensures consistency across Windows, macOS, and Linux
+*.go text eol=lf
+*.mod text eol=lf
+*.sum text eol=lf
+
+# Config and documentation files should also use LF
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.gitignore text eol=lf
+
+# Treat specific files as binary (do not modify line endings)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
