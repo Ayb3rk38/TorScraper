@@ -69,7 +69,9 @@ go run . -f targets.yaml -w 5
 The tool generates the following files in the project directory:
     screenshots/: Full-page PNG captures of the visited sites.
     results.json: Structured data containing the scraped HTML and URLs.
-    scan_report.log: Detailed log file including active/passive status
+    scan_report.log: Detailed log file including active/passive status.
+
+    
 
 Created for educational purposes and Cyber Threat Intelligence research.
 ⚠️ Disclaimer
