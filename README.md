@@ -23,38 +23,46 @@ Clone the repository:
 ```bash
 git clone [https://github.com/Ayb3rk38/TorScraper.git](https://github.com/Ayb3rk38/TorScraper.git)
 cd TorScraper 
-Install dependencies:
-Bash
+```
 
+Install dependencies:
+
+```bash
 go mod tidy
+```
 
 💻 How to Run
 
 Run the tool from the repository root:
-Bash
 
+```bash
 go run . -f targets.yaml -w 5
+```
 
 🌍 Browser Selection (Cross-Platform)
 
 If detection fails, set CHROME_PATH to your browser executable before running.
-🐧 Linux (bash/zsh)
-Bash
 
+🐧 Linux (bash/zsh)
+
+```bash
 export CHROME_PATH="/usr/bin/google-chrome"
 go run . -f targets.yaml -w 5
+```
 
 🍎 macOS (zsh)
-Bash
 
+```bash
 export CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 go run . -f targets.yaml -w 5
+```
 
 🪟 Windows (PowerShell)
-PowerShell
 
+```bash
 $env:CHROME_PATH = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 go run . -f targets.yaml -w 5
+```
 
 📊 Output
 
