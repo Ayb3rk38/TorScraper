@@ -30,6 +30,15 @@ Install dependencies:
 ```bash
 go mod tidy
 ```
+## ⚙️ Configuration
+
+**Important:** The repository includes a template `targets.yaml` file. Before running the tool, please open the file and populate it with valid .onion URLs:
+
+```yaml
+targets:
+  - [http://exampleonionaddress1.onion](http://exampleonionaddress1.onion)
+  - [http://exampleonionaddress2.onion](http://exampleonionaddress2.onion)
+  ```
 
 💻 How to Run
 
