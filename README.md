@@ -1,62 +1,72 @@
-🧅 TorScraper
+# 🧅 TorScraper
 
-TorScraper is a Go-based Cyber Threat Intelligence (CTI) tool designed to automate data collection from .onion services. It ensures anonymity by routing traffic through the Tor network and utilizes Go's concurrency model (Goroutines) for efficient multi-target scanning.
+**TorScraper** is a specialized Cyber Threat Intelligence (CTI) tool built with **Go (Golang)**. It automates data collection from .onion services by routing all traffic anonymously through the Tor network.
 
-✨ Key Features
+## ✨ Features
 
-    🛡️ Anonymous Routing: Securely directs all HTTP traffic through the local SOCKS5 proxy (127.0.0.1:9150/9050) to prevent IP leaks.
+* **Full-Page Screenshot:** Captures the entire page of the .onion site as a PNG file.
+* **HTML Backup:** Downloads and saves the raw source code for offline analysis.
+* **Concurrent Scanning:** Uses Go's worker pool pattern to scan multiple targets at once.
+* **Anonymous Routing:** All traffic is strictly routed through SOCKS5 proxy (**127.0.0.1:9150**).
+* **Target Management:** Reads addresses from a `targets.yaml` file.
 
-⚡ Concurrent Scanning: Leverages Goroutines to process multiple onion addresses simultaneously, as recommended for high-performance CTI collection.
+## 🛠️ Requirements
 
-📸 Evidence Collection: Automatically captures site status, raw HTML content, and full-page screenshots for intelligence reporting.
+- **Go:** 1.20+ recommended
+- **Tor Browser:** Connected and running on port 9150
+- **Browser:** A Chromium-based browser (Chrome, Chromium, Edge, or Brave)
 
-📂 Target Management: Cleanses and processes bulk onion URL lists provided via a targets.yaml file.
+## 🚀 Install
 
-📊 Structured Output: Exports gathered data into a structured format and generates a scan_report.log for status tracking.
+Clone the repository:
 
-🛠️ Prerequisites
-
-    Go 1.20+ 
-
-Tor Service / Tor Browser (Running on port 9150 or 9050)
-
-    Chrome/Chromium (Required for screenshot capture functionality)
-
-🚀 Installation & Usage
-
-    Clone the repository:
-    Bash
-
-git clone https://github.com/Ayb3rk38/TorScraper.git
-cd TorScraper
-
+```bash
+git clone [https://github.com/Ayb3rk38/TorScraper.git](https://github.com/Ayb3rk38/TorScraper.git)
+cd TorScraper 
 Install dependencies:
 Bash
 
 go mod tidy
 
-Run the tool: The program accepts a target file and a worker count as flags:
+💻 How to Run
 
+Run the tool from the repository root:
 Bash
 
 go run . -f targets.yaml -w 5
 
-Build the binary: To generate a compiled executable as required by the project specifications:
+🌍 Browser Selection (Cross-Platform)
 
+If detection fails, set CHROME_PATH to your browser executable before running.
+🐧 Linux (bash/zsh)
 Bash
 
-    go build -o TorScraper .
+export CHROME_PATH="/usr/bin/google-chrome"
+go run . -f targets.yaml -w 5
 
-📊 Outputs
+🍎 macOS (zsh)
+Bash
 
-Following a successful scan, the tool generates the following somatized outputs:
+export CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+go run . -f targets.yaml -w 5
 
-    screenshots/: Directory containing PNG captures of the visited onion sites.
+🪟 Windows (PowerShell)
+PowerShell
 
-results.json: A structured file containing URLs and their associated HTML content.
+$env:CHROME_PATH = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+go run . -f targets.yaml -w 5
 
-scan_report.log: A log file detailing which URLs were active or unreachable.
+📊 Output
 
+The tool generates the following files in the project directory:
+
+    screenshots/: Full-page PNG captures of the visited sites.
+
+    results.json: Structured data containing the scraped HTML and URLs.
+
+    scan_report.log: Detailed log file including active/passive status.
+
+Created for educational purposes and Cyber Threat Intelligence research.
 ⚠️ Disclaimer
 
-This project is developed for educational purposes and authorized security research only. The developer is not responsible for any misuse of this tool.
+This project is intended for learning and local testing. Always respect a website's Terms of Service and legal boundaries.
