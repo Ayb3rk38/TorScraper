@@ -64,16 +64,17 @@ $env:CHROME_PATH = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 go run . -f targets.yaml -w 5
 ```
 
-📊 Output
+## 📊 Output
 
 The tool generates the following files in the project directory:
-    screenshots/: Full-page PNG captures of the visited sites.
-    results.json: Structured data containing the scraped HTML and URLs.
-    scan_report.log: Detailed log file including active/passive status.
 
-    
+- `screenshots/`: Full-page PNG captures of the visited sites.
+- `results.json`: Structured data containing the scraped HTML and URLs.
+- `scan_report.log`: Detailed log file including active/passive status.
 
-Created for educational purposes and Cyber Threat Intelligence research.
-⚠️ Disclaimer
+---
+*Created for educational purposes and Cyber Threat Intelligence research.*
+
+## ⚠️ Disclaimer
 
 This project is intended for learning and local testing. Always respect a website's Terms of Service and legal boundaries.
