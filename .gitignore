@@ -1,0 +1,26 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+TorScraper
+tor-scraper
+main
+
+# Go build cache
+/bin/
+/pkg/
+
+# Scraper output
+screenshots/
+results.json
+scan_report.log
+*.png
+*.html
+*.txt
+
+# Editor & OS Junk
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
