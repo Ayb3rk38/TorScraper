@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"strings"
+	"regexp"
 	"sync"
 	"time"
 
@@ -54,28 +54,33 @@ func Worker(id int, jobs <-chan string, results chan<- ScanResult, wg *sync.Wait
 		res.Status = "Up"
 
 		ctx, cancel, err := NewChromeDPContext(browserCfg)
-		if err == nil {
-			safeName := url
-			safeName = strings.TrimPrefix(safeName, "http://")
-			safeName = strings.TrimPrefix(safeName, "https://")
-			safeName = strings.TrimSuffix(safeName, "/")
-			safeName = strings.ReplaceAll(safeName, ".", "_")
+		if err != nil {
+			log.Printf("[Worker %d] Chrome Context Failed: %v", id, err)
+		} else {
+			cleanUrl := regexp.MustCompile(`^https?://`).ReplaceAllString(url, "")
+			safeName := regexp.MustCompile(`[^a-zA-Z0-9]`).ReplaceAllString(cleanUrl, "_")
 
 			screenshotPath := fmt.Sprintf("screenshots/%s.png", safeName)
 
 			var buf []byte
 			err = chromedp.Run(ctx,
 				chromedp.Navigate(url),
-				chromedp.Sleep(2*time.Second),
-				chromedp.FullScreenshot(&buf, 90),
+				chromedp.Sleep(5*time.Second),
+				chromedp.FullScreenshot(&buf, 100),
 			)
-			if err == nil {
-				SaveDataToFile(screenshotPath, buf)
-				res.ScreenshotFile = screenshotPath
+
+			if err != nil {
+				log.Printf("[Worker %d] Screenshot FAILED for %s: %v", id, url, err)
+			} else {
+				saveErr := SaveDataToFile(screenshotPath, buf)
+				if saveErr != nil {
+					log.Printf("[Worker %d] File Save Error: %v", id, saveErr)
+				} else {
+					res.ScreenshotFile = screenshotPath
+				}
 			}
 			cancel()
 		}
-
 		results <- res
 	}
 }
