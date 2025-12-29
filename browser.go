@@ -16,6 +16,7 @@ type BrowserConfig struct {
 	AllowAlternatives bool
 	Headless          bool
 	ProxyServer       string
+	UserAgent 		  string 
 }
 
 func defaultBrowserConfig() BrowserConfig {
@@ -24,6 +25,7 @@ func defaultBrowserConfig() BrowserConfig {
 		AllowAlternatives: true,
 		Headless:          true,
 		ProxyServer:       "socks5://127.0.0.1:9150",
+		UserAgent:         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
 	}
 }
 
@@ -145,3 +147,4 @@ func NewChromeDPContext(cfg BrowserConfig) (context.Context, context.CancelFunc,
 	}
 	return taskCtx, cancel, nil
 }
+
