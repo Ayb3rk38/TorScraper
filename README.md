@@ -30,7 +30,7 @@ Install dependencies:
 ```bash
 go mod tidy
 ```
-## ⚙️ Configuration
+## Configuration
 
 **Important:** The repository includes a template `targets.yaml` file. Before running the tool, please open the file and populate it with valid .onion URLs:
 
